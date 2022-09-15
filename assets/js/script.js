@@ -7,11 +7,14 @@ timeblocksArr = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm
 init();
 createTimeblocks();
 colorTimeBlocks();
+
+// Initialize the page with Current Day
 function init() {
     day = moment().format('dddd, MMMM Do');
     currentDay.text(day);
 }
 
+// Create and Display Timeblocks
 function createTimeblocks() {
     var rowDiv = document.createElement('div');
     rowDiv.setAttribute('class', 'row vh-100');
@@ -42,8 +45,8 @@ function createTimeblocks() {
     }
 }
 
+// Color Timeblocks according to Current Time
 function colorTimeBlocks() {
-    console.log(timeblocksArr);
     for (i = 0; i < timeblocksArr.length; i++) {
         if (currentTime === timeblocksArr[i]) {
             var current = document.getElementById('textarea-' + [i]);
