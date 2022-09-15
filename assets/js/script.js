@@ -35,7 +35,7 @@ function createTimeblocks() {
         var saveBtn = document.createElement('button');
         saveBtn.setAttribute('class', 'btn saveBtn col-2');
         saveBtn.setAttribute('id', 'saveBtn-' + [i]);
-        saveBtn.innerText = "Save";
+        saveBtn.innerHTML = '<i class="far fa-save"></i>'
         inputGroup.append(saveBtn);
     }
 }
