@@ -12,7 +12,7 @@ function init() {
 
 function createTimeblocks() {
     var rowDiv = document.createElement('div');
-    rowDiv.setAttribute('class', 'row m-3 vh-100');
+    rowDiv.setAttribute('class', 'row vh-100');
     timeblockContainer.append(rowDiv);
     for (i = 0; i < timeblocksArr.length; i++) {
         var inputGroup = document.createElement('div');
