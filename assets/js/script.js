@@ -8,8 +8,10 @@ init();
 createTimeblocks();
 colorTimeBlocks();
 allSaveBtns = document.querySelectorAll('.saveBtn');
+allClearBtns = document.querySelectorAll('.clearBtn');
 allTextareas = document.querySelectorAll('.ta')
-addEventListeners();
+addSaveEventListeners();
+addClearEventListeners();
 getLocalStorage();
 
 // Initialize the page with Current Day
@@ -21,7 +23,7 @@ function init() {
 // Create and Display Timeblocks
 function createTimeblocks() {
     var rowDiv = document.createElement('div');
-    rowDiv.setAttribute('class', 'row vh-100');
+    rowDiv.setAttribute('class', 'row offset-1 vh-100');
     timeblockContainer.append(rowDiv);
     for (i = 0; i < timeblocksArr.length; i++) {
         var inputGroup = document.createElement('div');
@@ -29,7 +31,7 @@ function createTimeblocks() {
         rowDiv.append(inputGroup);
 
         var time = document.createElement('input');
-        time.setAttribute('class', 'col-2 hour text-center');
+        time.setAttribute('class', 'col-1 hour text-center p-1');
         time.setAttribute('type', 'text');
         time.setAttribute('readonly', '');
         time.setAttribute('value', timeblocksArr[i]);
@@ -37,15 +39,21 @@ function createTimeblocks() {
 
         var textarea = document.createElement('textarea');
         textarea.setAttribute('type', 'text');
-        textarea.setAttribute('class', 'col-8 ta textarea-' + [i]);
+        textarea.setAttribute('class', 'col-9 ta textarea-' + [i]);
         textarea.setAttribute('id', [i]);
         inputGroup.append(textarea);
 
         var saveBtn = document.createElement('button');
-        saveBtn.setAttribute('class', 'btn saveBtn col-2');
+        saveBtn.setAttribute('class', 'btn saveBtn col-1');
         saveBtn.setAttribute('id', [i]);
-        saveBtn.innerHTML = '<i class="far fa-save" id="' + [i] + '"></i>'
+        saveBtn.innerHTML = '<i class="far fa-save" id="' + [i] + '"></i>';
         inputGroup.append(saveBtn);
+
+        var clearBtn = document.createElement('button');
+        clearBtn.setAttribute('class', 'btn clearBtn col-1')
+        clearBtn.setAttribute('id', [i]);
+        clearBtn.innerHTML = '<i class="far fa-window-close" id="' + [i] + '"></i>';
+        inputGroup.append(clearBtn);
     }
 }
 
@@ -74,7 +82,7 @@ function colorTimeBlocks() {
 }
 
 // Adds an Event Listener to All Save Buttons
-function addEventListeners() {
+function addSaveEventListeners() {
     for (i = 0; i < allSaveBtns.length; i++) {
         allSaveBtns[i].addEventListener('click', saveEvent);
     }
@@ -82,10 +90,10 @@ function addEventListeners() {
 
 // Saves Textarea Value to Local Storage
 function saveEvent(event) {
-    buttonClicked = event.target.id;
+    var buttonClicked = event.target.id;
     for (i = 0; i < allTextareas.length; i++) {
-        var textareaID = allTextareas[i].id
-        if (textareaID === buttonClicked){
+        var textareaID = allTextareas[i].id;
+        if (textareaID === buttonClicked) {
             if (allTextareas[i].value != "") {
             localStorage.setItem(timeblocksArr[i], allTextareas[i].value);
             alert("Saved to local storage!");
@@ -95,6 +103,31 @@ function saveEvent(event) {
         } 
     }
 }
+
+// Adds an Event Listner to All Clear Buttons
+function addClearEventListeners() {
+    for (i = 0; i < allClearBtns.length; i++) {
+        allClearBtns[i].addEventListener('click', clearEvent);
+    }
+}
+
+// Clears Textarea Value and Local Storage
+function clearEvent(event) {
+    var buttonClicked = event.target.id;
+    for (i = 0; i < allTextareas.length; i++) {
+        var textareaID = allTextareas[i].id;
+        if (textareaID === buttonClicked) {
+            if (allTextareas[i].value != "") {
+                localStorage.removeItem(timeblocksArr[i]);
+                allTextareas[i].value = "";
+                alert("Removed your " + timeblocksArr[i] + " event!");
+            } else {
+                alert("Cannot remove an empty event!");
+            }
+        }
+    }
+}
+
 // Retrieve Textarea values from Local Storage
 function getLocalStorage() {
     for (i = 0; i < timeblocksArr.length; i++) {

@@ -40,7 +40,7 @@ textarea {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
-  border-left: none;
+  border-left: 1px solid black;
   border-right: none;
   border-bottom: 1px dashed #000000
 }
@@ -81,6 +81,27 @@ textarea {
 }
 
 .saveBtn i:hover {
+  font-size: 35px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.clearBtn {
+  border-radius: 15px;
+  background-color: #06aed5;
+  color: white;
+  margin-left: .25rem;
+}
+
+.clearBtn:hover {
+  cursor: default;
+}
+
+.clearBtn i {
+  font-size: 25px;
+}
+
+.clearBtn i:hover {
   font-size: 35px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
