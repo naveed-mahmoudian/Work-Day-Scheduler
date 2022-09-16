@@ -56,6 +56,11 @@ function colorTimeBlocks() {
             var current = document.querySelector('.textarea-' + [i]);
             current.setAttribute('class', 'col-8 present ta textarea-' + [i]);
             var currentIndex = i
+        } else if (timeblocksArr.every(t => t != currentTime)) {
+            var allPast = document.querySelectorAll('.ta');
+            for (i = 0; i < allPast.length; i++) {
+            allPast[i].setAttribute('class', 'col-8 past ta textarea-' + [i]);
+            }
         }
     }
     for (i = currentIndex + 1; i <= timeblocksArr.length - 1; i++) {
