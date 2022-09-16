@@ -81,8 +81,13 @@ function saveEvent(event) {
     for (i = 0; i < allTextareas.length; i++) {
         var textareaID = allTextareas[i].id
         if (textareaID === buttonClicked){
-            localStorage.setItem(timeblocksArr[i], allTextareas[i].value)
-        }
+            if (allTextareas[i].value != "") {
+            localStorage.setItem(timeblocksArr[i], allTextareas[i].value);
+            alert("Saved to local storage!");
+            } else {
+                alert("Please enter some text before saving!");
+            }
+        } 
     }
 }
 // Retrieve Textarea values from Local Storage
