@@ -55,7 +55,7 @@ function colorTimeBlocks() {
         if (currentTime === timeblocksArr[i]) {
             var current = document.querySelector('.textarea-' + [i]);
             current.setAttribute('class', 'col-8 present ta textarea-' + [i]);
-            currentIndex = i
+            var currentIndex = i
         }
     }
     for (i = currentIndex + 1; i <= timeblocksArr.length - 1; i++) {
