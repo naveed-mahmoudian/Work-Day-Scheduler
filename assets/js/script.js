@@ -50,7 +50,7 @@ function createTimeblocks() {
         inputGroup.append(saveBtn);
 
         var clearBtn = document.createElement('button');
-        clearBtn.setAttribute('class', 'btn clearBtn col-1')
+        clearBtn.setAttribute('class', 'btn clearBtn mx-1 col-1')
         clearBtn.setAttribute('id', [i]);
         clearBtn.innerHTML = '<i class="far fa-window-close" id="' + [i] + '"></i>';
         inputGroup.append(clearBtn);
