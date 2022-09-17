@@ -44,13 +44,13 @@ function createTimeblocks() {
         inputGroup.append(textarea);
 
         var saveBtn = document.createElement('button');
-        saveBtn.setAttribute('class', 'btn saveBtn col-1');
+        saveBtn.setAttribute('class', 'btn saveBtn col-1 bg-primary');
         saveBtn.setAttribute('id', [i]);
         saveBtn.innerHTML = '<i class="far fa-save" id="' + [i] + '"></i>';
         inputGroup.append(saveBtn);
 
         var clearBtn = document.createElement('button');
-        clearBtn.setAttribute('class', 'btn clearBtn mx-1 col-1')
+        clearBtn.setAttribute('class', 'btn clearBtn mx-1 col-1 bg-danger')
         clearBtn.setAttribute('id', [i]);
         clearBtn.innerHTML = '<i class="far fa-window-close" id="' + [i] + '"></i>';
         inputGroup.append(clearBtn);
@@ -96,9 +96,9 @@ function saveEvent(event) {
         if (textareaID === buttonClicked) {
             if (allTextareas[i].value != "") {
             localStorage.setItem(timeblocksArr[i], allTextareas[i].value);
-            alert("Saved to local storage!");
+            alert("Saved your " + timeblocksArr[i] + " event!");
             } else {
-                alert("Please enter some text before saving!");
+            alert("Please enter an event before saving!");
             }
         } 
     }

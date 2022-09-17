@@ -68,40 +68,44 @@ textarea {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06aed5;
   color: white;
 }
 
 .saveBtn:hover {
   cursor: default;
+  color: white;
 }
 
 .saveBtn i {
   font-size: 25px;
+  color: white;
 }
 
 .saveBtn i:hover {
   font-size: 35px;
+  color: white;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .clearBtn {
   border-radius: 15px;
-  background-color: #06aed5;
   color: white;
 }
 
 .clearBtn:hover {
   cursor: default;
+  color: white;
 }
 
 .clearBtn i {
   font-size: 25px;
+  color: white;
 }
 
 .clearBtn i:hover {
   font-size: 35px;
+  color: white;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
