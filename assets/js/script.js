@@ -2,7 +2,10 @@
 currentDay = $('#currentDay');
 currentTime = moment().format('ha');
 timeblockContainer = $('.container-fluid');
+jumbotron = $('.jumbotron');
 timeblocksArr = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
+var clearAllBtn = document.createElement('button');
+clearAllBtn.addEventListener('click', clearAllEvents);
 
 init();
 createTimeblocks();
@@ -13,6 +16,8 @@ allTextareas = document.querySelectorAll('.ta')
 addSaveEventListeners();
 addClearEventListeners();
 getLocalStorage();
+initClearAllBtn();
+checkLocalStorage();
 
 // Initialize the page with Current Day
 function init() {
@@ -97,6 +102,7 @@ function saveEvent(event) {
             if (allTextareas[i].value != "") {
             localStorage.setItem(timeblocksArr[i], allTextareas[i].value);
             alert("Saved your " + timeblocksArr[i] + " event!");
+            checkLocalStorage();
             } else {
             alert("Please enter an event before saving!");
             }
@@ -121,6 +127,7 @@ function clearEvent(event) {
                 localStorage.removeItem(timeblocksArr[i]);
                 allTextareas[i].value = "";
                 alert("Removed your " + timeblocksArr[i] + " event!");
+                checkLocalStorage();
             } else {
                 alert("Cannot remove an empty event!");
             }
@@ -134,6 +141,36 @@ function getLocalStorage() {
         var storage = localStorage.getItem(timeblocksArr[i]);
         if (storage != null) {
             allTextareas[i].textContent = storage
+        }
+    }
+}
+
+// Initializes Clear All Events Button
+function initClearAllBtn() {
+    clearAllBtn.setAttribute('class', 'btn clearAllBtn bg-danger text-white m-2');
+    clearAllBtn.setAttribute('style', 'display: none');
+    clearAllBtn.innerText = "Clear All Events";
+    jumbotron.append(clearAllBtn);
+}
+
+// Checks to see if Local Storage is Empty or not
+function checkLocalStorage() {
+    if (localStorage.length > 0) {
+        clearAllBtn.setAttribute('style', 'display: inline');
+    } else {
+        clearAllBtn.setAttribute('style', 'display: none');
+    }
+}
+
+// Clears all Events when Clear All Events button is clicked
+function clearAllEvents() {
+    var confirmClearAllEvents = confirm("Are you sure you want to clear ALL events? This cannot be undone!\n OK = Yes\n Cancel = No");
+
+    if (confirmClearAllEvents) {
+        localStorage.clear();
+        checkLocalStorage();
+        for (i = 0; i < allTextareas.length; i++) {
+            allTextareas[i].value = "";
         }
     }
 }
