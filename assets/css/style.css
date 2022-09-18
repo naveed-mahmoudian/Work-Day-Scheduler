@@ -77,12 +77,12 @@ textarea {
 }
 
 .saveBtn i {
-  font-size: 25px;
+  font-size: 150%;
   color: white;
 }
 
 .saveBtn i:hover {
-  font-size: 35px;
+  font-size: 225%;
   color: white;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
@@ -99,12 +99,12 @@ textarea {
 }
 
 .clearBtn i {
-  font-size: 25px;
+  font-size: 150%;
   color: white;
 }
 
 .clearBtn i:hover {
-  font-size: 35px;
+  font-size: 225%;
   color: white;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
