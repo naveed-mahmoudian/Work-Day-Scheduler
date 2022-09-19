@@ -6,9 +6,9 @@ This repo is a tool to help schedule your work day. You can add important events
 
 ## Table of Contents
 
-- [Usage] (#usage)
-- [Screenshot] (#screenshot)
-- [Credits] (#credits)
+- [Usage](#usage)
+- [Screenshot](#screenshot)
+- [Credits](#credits)
 
 ## Usage
 
